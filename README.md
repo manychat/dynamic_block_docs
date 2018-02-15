@@ -1,7 +1,7 @@
-#Response Reference
+# Response Reference
 
-##Response format
-Use this response format for sending dynamic messages:
+## Response format
+Response format for sending dynamic messages:
 
     {
         "version": "v1",
@@ -18,13 +18,13 @@ Use this response format for sending dynamic messages:
         }
     }
     
-Current version of dynamic block API `v1`
+Dynamic block API current version `v1`
 
-#Messages format
+# Messages format
 
-##Sending text
-Use this response to send text messages. The `"buttons"` property is optional.
-With text message you can use `url` and `call` buttons.
+## Sending text
+Use this response for sending text messages. The `"buttons"` property is optional.
+`url` and `call` buttons can be used with text message.
 
     {
        "type": "text",
@@ -38,8 +38,8 @@ With text message you can use `url` and `call` buttons.
        ]
     }
     
-##Sending image
-Use this response to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call` and `share` buttons.
+## Sending image
+This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call` and `share` buttons.
 
     {
        "type": "image",
@@ -47,8 +47,8 @@ Use this response to send image files. Messenger supports JPG, PNG and GIF image
        "buttons": [] //optional
     }
     
-##Sending video file
-Use this response to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call` and `share` buttons.
+## Sending video file
+This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call` and `share` buttons.
     
     {
        "type": "video",
@@ -56,8 +56,8 @@ Use this response to send video files. Messenger supports videos, which are up t
        "buttons": [] //optional
     }
      
-##Sending files
-Use this response to send any other files, which are no larger than 25 MB.
+## Sending files
+This response is used to send any other files, which are no larger than 25 MB.
 
     {
        "type": "file",
@@ -65,8 +65,8 @@ Use this response to send any other files, which are no larger than 25 MB.
     }
     
     
-##Sending gallery cards
-Use this response to send a horizontal scrollable gallery. You can use `url`, `call` and `share` buttons.
+## Sending gallery cards
+This response is used to send a horizontal scrollable gallery. You can use `url`, `call` and `share` buttons.
 
     {
        "type": "cards",
@@ -83,9 +83,9 @@ Use this response to send a horizontal scrollable gallery. You can use `url`, `c
        ]
     }
 
-##Sending lists
-Use this response to send a set of items vertically. It can be rendered in two different ways. `"top_element_style": "large"` renders the first item with a cover image with text overlaid. `"top_element_style": "compact"` renders each item identically and is useful for presenting a list of items where no item is shown prominently.
-With list message you can use only `url` type buttons.
+## Sending lists
+This response is used to send a set of items vertically.  There are 2 options of rendering it. `"top_element_style": "large"` renders the first item with a cover image with text overlaid. `"top_element_style": "compact"` renders each item identically and is useful for presenting a list of items where no item is shown prominently.
+Only `url` type buttons can be used with list message.
 
     {
        "type": "list",
@@ -105,7 +105,7 @@ With list message you can use only `url` type buttons.
        ]
      }
      
-##Buttons
+## Buttons
 You can use buttons with each types: `call`, `url`, `share`.
 
     {
