@@ -4,7 +4,7 @@
 Response format for sending dynamic messages:
 
     {
-        "version": "v1",
+        "version": "v2",
         "content": {
             "messages": [
                 {
@@ -18,13 +18,13 @@ Response format for sending dynamic messages:
         }
     }
     
-Dynamic block API current version `v1`
+Dynamic block API current version `v2`
 
 # Messages format
 
 ## Sending text
 Use this response for sending text messages. The `"buttons"` property is optional.
-`url` and `call` buttons can be used with text message.
+`url`, `flow`, `node` and `call` buttons can be used with text message.
 
     {
        "type": "text",
@@ -39,7 +39,7 @@ Use this response for sending text messages. The `"buttons"` property is optiona
     }
     
 ## Sending image
-This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call` and `share` buttons.
+This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
 
     {
        "type": "image",
@@ -48,7 +48,7 @@ This response is used to send image files. Messenger supports JPG, PNG and GIF i
     }
     
 ## Sending video file
-This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call` and `share` buttons.
+This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
     
     {
        "type": "video",
@@ -66,7 +66,7 @@ This response is used to send any other files, which are no larger than 25 MB.
     
     
 ## Sending gallery cards
-This response is used to send a horizontal scrollable gallery. You can use `url`, `call` and `share` buttons.
+This response is used to send a horizontal scrollable gallery. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
 
     {
        "type": "cards",
@@ -85,7 +85,7 @@ This response is used to send a horizontal scrollable gallery. You can use `url`
 
 ## Sending lists
 This response is used to send a set of items vertically.  There are 2 options of rendering it. `"top_element_style": "large"` renders the first item with a cover image with text overlaid. `"top_element_style": "compact"` renders each item identically and is useful for presenting a list of items where no item is shown prominently.
-Only `url` type buttons can be used with list message. The number of elements is limited from 2 to 4.
+You can use `url`, `flow`, `node` and `buy` buttons with list message. The number of elements is limited from 2 to 4.
 
     {
        "type": "list",
@@ -106,23 +106,46 @@ Only `url` type buttons can be used with list message. The number of elements is
      }
      
 ## Buttons
-You can use buttons with each types: `call`, `url`, `share`.
+You can use buttons with each types: `call`, `url`, `share`, `flow`, `node`, `buy`.
 
     {
         ...
         "buttons": [
-            {
-                "type": "url",
-                "caption": "External link",
-                "url": "https://manychat.com"
-            },
             {
                 "type": "call",
                 "caption": "Call me",
                 "phone": "+1 (555) 555-55-55"
             },
             {
+                "type": "url",
+                "caption": "External link",
+                "url": "https://manychat.com"
+            },
+            {
                 "type": "share"
+            },
+            {
+                "type": "flow",
+                "caption": "Go",
+                "target": "content20180221085508_278589"
+            },
+            {
+                "type": "node",
+                "caption": "Show",
+                "target": "My Content"
+            },
+            {
+                "type":    "buy",
+                "caption": "Buy",
+                "customer": {
+                    "shipping_address": true,
+                    "contact_name":     false,
+                    "contact_phone":    true
+                },
+                "product": {
+                    "label": "T-shirt",
+                    "price": "22.50"
+                }
             }
         ]
     }
