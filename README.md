@@ -1,6 +1,6 @@
-#Response Reference
+# Response Reference
 
-##Response format
+## Response format
 Response format for sending dynamic messages:
 
     {
@@ -29,9 +29,9 @@ Response format for sending dynamic messages:
     
 Dynamic block API current version `v2`
 
-#Messages format
+# Messages format
 
-##Sending text
+## Sending text
 Use this response for sending text messages. The `"buttons"` property is optional.
 `url`, `flow`, `node` and `call` buttons can be used with text message.
 
@@ -47,7 +47,7 @@ Use this response for sending text messages. The `"buttons"` property is optiona
        ]
     }
     
-##Sending image
+## Sending image
 This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
 
     {
@@ -56,7 +56,7 @@ This response is used to send image files. Messenger supports JPG, PNG and GIF i
        "buttons": [] //optional
     }
     
-##Sending video file
+## Sending video file
 This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
     
     {
@@ -65,7 +65,7 @@ This response is used to send video files. Messenger supports videos, which are 
        "buttons": [] //optional
     }
      
-##Sending files
+## Sending files
 This response is used to send any other files, which are no larger than 25 MB.
 
     {
@@ -74,7 +74,7 @@ This response is used to send any other files, which are no larger than 25 MB.
     }
     
     
-##Sending gallery cards
+## Sending gallery cards
 This response is used to send a horizontal scrollable gallery. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
 
     {
@@ -92,7 +92,7 @@ This response is used to send a horizontal scrollable gallery. You can use `url`
        ]
     }
 
-##Sending lists
+## Sending lists
 This response is used to send a set of items vertically.  There are 2 options of rendering it. `"top_element_style": "large"` renders the first item with a cover image with text overlaid. `"top_element_style": "compact"` renders each item identically and is useful for presenting a list of items where no item is shown prominently.
 You can use `url`, `flow`, `node` and `buy` buttons with list message. The number of elements is limited from 2 to 4.
 
@@ -114,7 +114,7 @@ You can use `url`, `flow`, `node` and `buy` buttons with list message. The numbe
        ]
      }
      
-##Buttons
+## Buttons
 You can use buttons with each types: `call`, `url`, `share`, `flow`, `node`, `buy`.
 Buttons format:
 
@@ -131,7 +131,7 @@ Buttons format:
         ]
     }
 
-###Call button
+### Call button
 
     {
         "type": "call",
@@ -139,7 +139,7 @@ Buttons format:
         "phone": "+1 (555) 555-55-55"
     }
     
-###Url button
+### Url button
 
     {
         "type": "url",
@@ -147,13 +147,13 @@ Buttons format:
         "url": "https://manychat.com"
     }
     
-###Share button
+### Share button
 
     {
         "type": "share"
     }
     
-###Go to node button
+### Go to node button
 
     {
         "type": "node",
@@ -163,7 +163,7 @@ Buttons format:
     
 `target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
     
-###Go to flow button
+### Go to flow button
 
     {
         "type": "flow",
@@ -173,7 +173,7 @@ Buttons format:
     
 `target` needs flow ID (it can be found in URL when flow is opened) 
     
-###Buy button
+### Buy button
 
     {
         "type":    "buy",
@@ -192,9 +192,9 @@ Buttons format:
 `shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form
 `buy` button can only be used after Stripe account is connected in ManyChat settings. This button is in Beta mode.
    
-#Actions format
+# Actions format
 `actions` property of server response is optional.
-##Action add tag
+## Action add tag
 Use this response for add tag for subscriber. Tag with same name must be exists in your bot:
 
     {
@@ -204,7 +204,7 @@ Use this response for add tag for subscriber. Tag with same name must be exists 
     
 Tag name sent using `tag_name` parameter should match one of existing tags within ManyChat bot 
     
-##Action remove tag
+## Action remove tag
 Use this response for remove tag for subscriber. Tag with same name must be exists in your bot:
 
     {
@@ -212,7 +212,7 @@ Use this response for remove tag for subscriber. Tag with same name must be exis
         "tag_name": "your tag",
     }
     
-##Action set subscriber's field value
+## Action set subscriber's field value
 Use this response for set subscriber's field value. Custom field with same name must be exists in your bot
 
     {
@@ -231,7 +231,7 @@ Use following value formats:
 - For `Date Time` field type value should be transferred as text with date formatted in ISO8601 UTC, i.e `"2018-03-25T13:25:00.000Z"`
 - For `True/False` field type value should be transferred like boolean `true` or `false` without quotation marks
 
-##Action unset subscriber's field value
+## Action unset subscriber's field value
 Use this response for unset (clear) subscriber's field value. Custom field with same name must be exists in your bot
 
     {
