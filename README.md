@@ -23,6 +23,16 @@ Response format for sending dynamic messages:
                 {
                     ...Another actions
                 }
+            ],
+            "quick_replies": [ //optional
+                {
+                        "type": "node",
+                        "caption": "Quick reply text",
+                        "target": "My Content"
+                },
+                {
+                    ...Another quick replies
+                }
             ]
         }
     }
@@ -62,6 +72,15 @@ This response is used to send video files. Messenger supports videos, which are 
     {
        "type": "video",
        "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mpg",
+       "buttons": [] //optional
+    }
+    
+## Sending audio file
+This response is used to send audio files. Messenger supports audio, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+    
+    {
+       "type": "audio",
+       "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mp3",
        "buttons": [] //optional
     }
      
@@ -191,6 +210,25 @@ Buttons format:
     
 `shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form
 `buy` button can only be used after Stripe account is connected in ManyChat settings. This button is in Beta mode.
+
+### Dynamic block callback button
+
+    {
+        "type": "dynamic_block_callback",
+        "caption": "Dynamic content",
+        "url": "https://manychat.com/dynamic",
+        "method": "post",
+        "headers": { //optional
+            "x-header": "value,
+            ...
+        },
+        "payload": { //optional
+            "key": "value",
+            ...
+        }
+    }
+    
+!need_translate `dynamic_block_callback` Работает аналогично dynamic block в контентной ноде, при клике на кнопку будет отправлен запрос на внешний сервер, ответ от сервера будет транслирован и отправлен пользователю. Url внешнего сервера должен быть указан с протоколом https
    
 # Actions format
 `actions` property of server response is optional.
@@ -238,3 +276,45 @@ Use this response for unset (clear) subscriber's field value. Custom field with 
         "action": "unset_field_value",
         "field_name": "your field name"
     }
+    
+# Quick replies
+`quick_replies` property of server response is optional.
+!need_translate Quick replies не могут быть использованны в динамическом блоке контентной ноды, если после динамического блока содержатся другие блоки.
+Формат описания quick replies аналогичен описанию кнопок, поддерживаются следующие виды quick replies: `content`, `node`, `dynamic_block_callback`
+
+## Go to node quick reply
+
+    {
+        "type": "node",
+        "caption": "Show",
+        "target": "My Content"
+    }
+    
+`target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
+    
+## Go to flow quick reply
+
+    {
+        "type": "flow",
+        "caption": "Go",
+        "target": "content20180221085508_278589"
+    }
+    
+## Dynamic block callback quick reply
+
+    {
+        "type": "dynamic_block_callback",
+        "caption": "Dynamic content",
+        "url": "https://manychat.com/dynamic",
+        "method": "post",
+        "headers": { //optional
+            "x-header": "value,
+            ...
+        },
+        "payload": { //optional
+            "key": "value",
+            ...
+        }
+    }
+    
+`target` needs flow ID (it can be found in URL when flow is opened) 
