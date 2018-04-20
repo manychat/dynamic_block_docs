@@ -228,7 +228,7 @@ Buttons format:
         }
     }
     
-!need_translate `dynamic_block_callback` Работает аналогично dynamic block в контентной ноде, при клике на кнопку будет отправлен запрос на внешний сервер, ответ от сервера будет транслирован и отправлен пользователю. Url внешнего сервера должен быть указан с протоколом https
+`dynamic_block_callback` works the same way as dynamic block in a content node, it will send a request to the server upon click, server reply will be sent to user. External server URL must be mentioned with HTTPS protocol.
    
 # Actions format
 `actions` property of server response is optional.
@@ -279,8 +279,8 @@ Use this response for unset (clear) subscriber's field value. Custom field with 
     
 # Quick replies
 `quick_replies` property of server response is optional.
-!need_translate Quick replies не могут быть использованны в динамическом блоке контентной ноды, если после динамического блока содержатся другие блоки.
-Формат описания quick replies аналогичен описанию кнопок, поддерживаются следующие виды quick replies: `content`, `node`, `dynamic_block_callback`
+Quick replies cannot be used in dynamic block of a content node if there are other blocks exist afterwards.
+Quick reply description format is the same for buttons, it supports `content`, `node`, `dynamic_block_callback` types.
 
 ## Go to node quick reply
 
