@@ -80,8 +80,7 @@ This response is used to send audio files. Messenger supports audio, which are u
     
     {
        "type": "audio",
-       "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mp3",
-       "buttons": [] //optional
+       "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mp3"
     }
      
 ## Sending files
@@ -219,7 +218,7 @@ Buttons format:
         "url": "https://manychat.com/dynamic",
         "method": "post",
         "headers": { //optional
-            "x-header": "value,
+            "x-header": "value",
             ...
         },
         "payload": { //optional
@@ -308,7 +307,7 @@ Quick reply description format is the same for buttons, it supports `content`, `
         "url": "https://manychat.com/dynamic",
         "method": "post",
         "headers": { //optional
-            "x-header": "value,
+            "x-header": "value",
             ...
         },
         "payload": { //optional
