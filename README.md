@@ -38,6 +38,7 @@ Response format for sending dynamic messages:
     }
     
 Dynamic block API current version `v2`
+Dynamic block has a limit to have not more than 10 messages in `messages` block, 11 quick replies and 5 actions
 
 # Messages format
 
