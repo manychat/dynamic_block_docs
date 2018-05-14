@@ -204,11 +204,12 @@ Buttons format:
         },
         "product": {
             "label": "T-shirt",
-            "price": "22.50"
+            "cost": 2250
         }
     }
     
 `shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form
+`product`.`cost` should be set in cents (for example cost value of `$22.5` must set to `2250`); 
 `buy` button can only be used after Stripe account is connected in ManyChat settings. This button is in Beta mode.
 
 ### Dynamic block callback button
