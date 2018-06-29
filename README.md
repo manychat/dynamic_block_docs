@@ -174,7 +174,7 @@ There are 3 options of `webview_size`: `full` - (100%), `medium` - (75%), `compa
         "type": "share"
     }
     
-### Go to node button
+### Go to node button*
 
     {
         "type": "node",
@@ -287,7 +287,7 @@ Use this response for unset (clear) subscriber's field value. Custom field with 
 Quick replies cannot be used in dynamic block of a content node if there are other blocks exist afterwards.
 Quick reply description format is the same for buttons, it supports `content`, `node`, `dynamic_block_callback` types.
 
-## Go to node quick reply
+## Go to node quick reply*
 
     {
         "type": "node",
@@ -323,3 +323,6 @@ Quick reply description format is the same for buttons, it supports `content`, `
     }
     
 `target` needs flow ID (it can be found in URL when flow is opened) 
+
+
+\* - does not work for Zapier action "Send Dynamic Message to User"
