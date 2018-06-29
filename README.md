@@ -103,6 +103,7 @@ This response is used to send a horizontal scrollable gallery. You can use `url`
               "title": "Card title",
               "subtitle": "card text",
               "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
+              "action_url": "https://manychat.com", //optional
               "buttons": [] //optional
             },
             {
@@ -159,11 +160,12 @@ Buttons format:
     }
     
 ### Url button
-
+There are 3 options of `webview_size`: `full` - (100%), `medium` - (75%), `compact` - (50%)
     {
         "type": "url",
         "caption": "External link",
-        "url": "https://manychat.com"
+        "url": "https://manychat.com",
+        "webview_size": "full" // optional, default native
     }
     
 ### Share button
@@ -205,11 +207,13 @@ Buttons format:
         "product": {
             "label": "T-shirt",
             "cost": 2250
-        }
+        },
+        "success_target": "My Content" // Optional
     }
     
 `shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form
 `product`.`cost` should be set in cents (for example cost value of `$22.5` must set to `2250`); 
+`success_target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
 `buy` button can only be used after Stripe account is connected in ManyChat settings. This button is in Beta mode.
 
 ### Dynamic block callback button
