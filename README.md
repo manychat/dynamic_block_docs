@@ -103,6 +103,7 @@ This response is used to send a horizontal scrollable gallery. You can use `url`
               "title": "Card title",
               "subtitle": "card text",
               "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
+              "action_url": "https://manychat.com", //optional
               "buttons": [] //optional
             },
             {
@@ -110,6 +111,8 @@ This response is used to send a horizontal scrollable gallery. You can use `url`
             }
        ]
     }
+    
+`action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs
 
 ## Sending lists
 This response is used to send a set of items vertically.  There are 2 options of rendering it. `"top_element_style": "large"` renders the first item with a cover image with text overlaid. `"top_element_style": "compact"` renders each item identically and is useful for presenting a list of items where no item is shown prominently.
@@ -133,6 +136,8 @@ You can use `url`, `flow`, `node` and `buy` buttons with list message. The numbe
        ]
      }
      
+`action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs
+
 ## Buttons
 You can use buttons with each types: `call`, `url`, `share`, `flow`, `node`, `buy`.
 Buttons format:
@@ -159,11 +164,12 @@ Buttons format:
     }
     
 ### Url button
-
+There are 3 options of `webview_size`: `full` - (100%), `medium` - (75%), `compact` - (50%)
     {
         "type": "url",
         "caption": "External link",
-        "url": "https://manychat.com"
+        "url": "https://manychat.com",
+        "webview_size": "full" // optional, default native
     }
     
 ### Share button
@@ -172,7 +178,7 @@ Buttons format:
         "type": "share"
     }
     
-### Go to node button
+### Go to node button*
 
     {
         "type": "node",
@@ -205,11 +211,16 @@ Buttons format:
         "product": {
             "label": "T-shirt",
             "cost": 2250
-        }
+        },
+        "success_target": "My Content" // Optional
     }
     
-`shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form
+`shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form;
+
 `product`.`cost` should be set in cents (for example cost value of `$22.5` must set to `2250`); 
+
+`success_target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations;
+
 `buy` button can only be used after Stripe account is connected in ManyChat settings. This button is in Beta mode.
 
 ### Dynamic block callback button
@@ -283,7 +294,7 @@ Use this response for unset (clear) subscriber's field value. Custom field with 
 Quick replies cannot be used in dynamic block of a content node if there are other blocks exist afterwards.
 Quick reply description format is the same for buttons, it supports `content`, `node`, `dynamic_block_callback` types.
 
-## Go to node quick reply
+## Go to node quick reply*
 
     {
         "type": "node",
@@ -319,3 +330,6 @@ Quick reply description format is the same for buttons, it supports `content`, `
     }
     
 `target` needs flow ID (it can be found in URL when flow is opened) 
+
+
+\* - does not work for Zapier action "Send Dynamic Message to User"
