@@ -111,6 +111,8 @@ This response is used to send a horizontal scrollable gallery. You can use `url`
             }
        ]
     }
+    
+`action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs
 
 ## Sending lists
 This response is used to send a set of items vertically.  There are 2 options of rendering it. `"top_element_style": "large"` renders the first item with a cover image with text overlaid. `"top_element_style": "compact"` renders each item identically and is useful for presenting a list of items where no item is shown prominently.
@@ -134,6 +136,8 @@ You can use `url`, `flow`, `node` and `buy` buttons with list message. The numbe
        ]
      }
      
+`action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs
+
 ## Buttons
 You can use buttons with each types: `call`, `url`, `share`, `flow`, `node`, `buy`.
 Buttons format:
@@ -211,9 +215,12 @@ There are 3 options of `webview_size`: `full` - (100%), `medium` - (75%), `compa
         "success_target": "My Content" // Optional
     }
     
-`shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form
+`shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form;
+
 `product`.`cost` should be set in cents (for example cost value of `$22.5` must set to `2250`); 
-`success_target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
+
+`success_target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations;
+
 `buy` button can only be used after Stripe account is connected in ManyChat settings. This button is in Beta mode.
 
 ### Dynamic block callback button
