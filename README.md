@@ -164,7 +164,14 @@ Buttons format:
     }
     
 ### Url button
-There are 3 options of `webview_size`: `full` - (100%), `medium` - (75%), `compact` - (50%)
+There are 3 options of `webview_size`: 
+
+`full` - (100%), 
+
+`medium` - (75%), 
+
+`compact` - (50%)
+
     {
         "type": "url",
         "caption": "External link",
