@@ -340,3 +340,32 @@ Quick reply description format is the same for buttons, it supports `content`, `
 
 
 \* - does not work for Zapier action "Send Dynamic Message to User"
+
+# Variables
+
+In dynamic block request body, you can use `Full Subscriber Data` variable, that contains all subscriber's information:
+
+    {
+        "id": 13245647xxxxxxxxx,
+        "key": "user:13245647xxxxxxxxx",
+        "page_id": 234564657xxxxxxxx,
+        "status": "active",
+        "first_name": "Subscriber",
+        "last_name": "Lastname",
+        "name": "Subscriber Lastname",
+        "gender": "male",
+        "profile_pic": "https://xxxxxxxxx.com/subscribers/big_xxxxxxxxxxxxxxxx.jpg",
+        "locale": "en_US",
+        "language": "English",
+        "timezone": "UTC-07",
+        "live_chat_url": "https://manychat.com/fb234564657xxxxxxxx/chat/13245647xxxxxxxxx",
+        "last_input_text": "Last subscriber's input text",
+        "last_growth_tool": null,
+        "custom_fields": {
+            "customField": 0.75,
+            "customDate": "2018-05-31",
+            "customBool": true,
+            ...
+        }
+
+    }
