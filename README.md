@@ -361,6 +361,9 @@ In dynamic block request body, you can use `Full Subscriber Data` variable, that
         "live_chat_url": "https://manychat.com/fb234564657xxxxxxxx/chat/13245647xxxxxxxxx",
         "last_input_text": "Last subscriber's input text",
         "last_growth_tool": null,
+        "subscribed": "2018-07-02T00:00:00+00:00",
+        "last_interaction": "2018-07-02T00:00:00+00:00",
+        "last_seen": "2018-07-02T00:00:00+00:00",
         "custom_fields": {
             "customField": 0.75,
             "customDate": "2018-05-31",
