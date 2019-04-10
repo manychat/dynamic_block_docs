@@ -199,6 +199,7 @@ There are 3 options of `webview_size`:
     }
     
 `target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
+Go to node buttons are not supported in Public API.
     
 ### Go to flow button
 
@@ -315,6 +316,7 @@ Quick reply description format is the same for buttons, it supports `content`, `
     }
     
 `target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
+Go to node quick replies are not supported in Public API.
     
 ## Go to flow quick reply
 
