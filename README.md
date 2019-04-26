@@ -4,185 +4,172 @@
 Response format for sending dynamic messages:
 
     {
-        "version": "v2",
-        "content": {
-            "messages": [
-                {
-                   "type": "text",
-                   "text": "simple text"    
-                },
-                {
-                    ...Another messages
-                }
-            ],
-            "actions": [  //optional
-                {
-                    "action": "add_tag",
-                    "tag_name": "example tag"
-                },
-                {
-                    ...Another actions
-                }
-            ],
-            "quick_replies": [ //optional
-                {
-                        "type": "node",
-                        "caption": "Quick reply text",
-                        "target": "My Content"
-                },
-                {
-                    ...Another quick replies
-                }
-            ]
-        }
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text"
+          },
+          {
+            ...Another messages
+          }
+        ],
+        "actions": [  //optional
+          {
+            "action": "add_tag",
+            "tag_name": "example tag"
+          },
+          {
+            ...Another actions
+          }
+        ],
+        "quick_replies": [ //optional
+          {
+            "type": "node",
+            "caption": "Quick reply text",
+            "target": "My Content"
+          },
+          {
+            ...Another quick replies
+          }
+        ]
+      }
     }
     
 Dynamic block API current version `v2`
 Dynamic block has a limit to have not more than 10 messages in `messages` block, 11 quick replies and 5 actions.
+The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
 # Messages format
 
 ## Sending text
-Use this response for sending text messages. The `"buttons"` property is optional.
+Use this response for sending text messages.
 `url`, `flow`, `node` and `call` buttons can be used with text message.
+The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
-        "version": "v2",
-        "content": {
-            "messages": [
-                {
-                    "type": "text",
-                    "text": "simple text with button",
-                    "buttons": [
-                        {
-                            "type": "url",
-                            "caption": "External link",
-                            "url": "https://manychat.com"
-                        }
-                    ]
-                },
-                {
-                    ...Another messages
-                }
-            ],
-            "actions": [],  //optional
-            "quick_replies": []  //optional
-        }
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "url",
+                "caption": "External link",
+                "url": "https://manychat.com"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 ## Sending image
 This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
-        "version": "v2",
-        "content": {
-            "messages": [
-                {
-                    "type": "image",
-                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
-                    "buttons": [] //optional
-                },
-                {
-                    ...Another messages
-                }
-            ],
-            "actions": [],  //optional
-            "quick_replies": []  //optional
-        }
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "image",
+            "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
+            "buttons": []
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 ## Sending video file
 This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
-        "version": "v2",
-        "content": {
-            "messages": [
-                {
-                    "type": "video",
-                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mpg",
-                    "buttons": [] //optional
-                },
-                {
-                    ...Another messages
-                }
-            ],
-            "actions": [],  //optional
-            "quick_replies": []  //optional
-        }
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "video",
+            "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mpg",
+            "buttons": []
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 ## Sending audio file
 This response is used to send audio files. Messenger supports audio, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
-        "version": "v2",
-        "content": {
-            "messages": [
-                {
-                    "type": "audio",
-                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mp3"
-                },
-                {
-                    ...Another messages
-                }
-            ],
-            "actions": [],  //optional
-            "quick_replies": []  //optional
-        }
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "audio",
+            "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mp3",
+            "buttons": []
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
      
 ## Sending files
 This response is used to send any other files, which are no larger than 25 MB.
+The `"actions"`, `"quick_replies"` properties are optional.
 
     {
-        "version": "v2",
-        "content": {
-            "messages": [
-                {
-                    "type": "file",
-                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.pdf"
-                },
-                {
-                    ...Another messages
-                }
-            ],
-            "actions": [],  //optional
-            "quick_replies": []  //optional
-        }
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "file",
+            "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.pdf"
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
     
 ## Sending gallery cards
 This response is used to send a horizontal scrollable gallery. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+The `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
-        "version": "v2",
-        "content": {
-            "messages": [
-                {
-                   "type": "cards",
-                   "elements": [
-                        {
-                          "title": "Card title",
-                          "subtitle": "card text",
-                          "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
-                          "action_url": "https://manychat.com", //optional
-                          "buttons": [] //optional
-                        },
-                        {
-                            ...
-                        }
-                   ],
-                   "image_aspect_ratio": "horizontal"
-                },
-                {
-                    ...Another messages
-                }
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "cards",
+            "elements": [
+              {
+                "title": "Card title",
+                "subtitle": "card text",
+                "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
+                "action_url": "https://manychat.com",
+                "buttons": []
+              }
             ],
-            "actions": [],  //optional
-            "quick_replies": []  //optional
-        }
+            "image_aspect_ratio": "horizontal"
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 `action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs.\
@@ -191,35 +178,30 @@ This response is used to send a horizontal scrollable gallery. You can use `url`
 ## Sending lists
 This response is used to send a set of items vertically.  There are 2 options of rendering it. `"top_element_style": "large"` renders the first item with a cover image with text overlaid. `"top_element_style": "compact"` renders each item identically and is useful for presenting a list of items where no item is shown prominently.
 You can use `url`, `flow`, `node` and `buy` buttons with list message. The number of elements is limited from 2 to 4.
+The `"top_element_style"`, `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
-        "version": "v2",
-        "content": {
-            "messages": [
-            {
-                   "type": "list",
-                   "top_element_style": "compact", //optional, default "compact"
-                   "buttons": [], //optional
-                   "elements": [
-                     {
-                        "title": "list title1",
-                        "subtitle": "list substitle2",
-                        "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png"
-                        "action_url": "https://manychat.com", //optional
-                        "buttons": [] //optional
-                     },
-                     {
-                        ...
-                     }
-                   ]
-                },
-                {
-                    ...Another messages
-                }
-            ],
-            "actions": [],  //optional
-            "quick_replies": []  //optional
-        }
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "list",
+            "top_element_style": "compact",
+            "buttons": [],
+            "elements": [
+              {
+                "title": "list title1",
+                "subtitle": "list substitle2",
+                "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png"
+                "action_url": "https://manychat.com",
+                "buttons": []
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
      
 `action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs
@@ -228,28 +210,75 @@ You can use `url`, `flow`, `node` and `buy` buttons with list message. The numbe
 You can use buttons with each types: `call`, `url`, `share`, `flow`, `node`, `buy`.
 You can provide custom action to be performed with the button.  
 Actions can only be attached to `url`, `flow` and `node` button types.
-Actions for buttons must comply with same format and restrictions as described in [Actions format](#actions-format) bellow
+Actions for buttons must comply with same format and restrictions as described in [Actions format](#actions-format) bellow.
+The `"actions"` property is optional.
 
     {
-        "buttons": [
-            {
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text",
+            "buttons": [
+              {
                 "type": "url",
                 "caption": "External link",
                 "url": "https://manychat.com",
                 "actions": [] //optional
-            },
-            {
+              },
+              {
                 ...Another buttons
-            }
+              }
+            ]
+          },
+          {
+            ...Another messages
+          }
+        ],
+        "actions": [  //optional
+          {
+            "action": "add_tag",
+            "tag_name": "example tag"
+          },
+          {
+            ...Another actions
+          }
+        ],
+        "quick_replies": [ //optional
+          {
+            "type": "node",
+            "caption": "Quick reply text",
+            "target": "My Content"
+          },
+          {
+            ...Another quick replies
+          }
         ]
+      }
     }
 
 ### Call button
 
     {
-        "type": "call",
-        "caption": "Call me",
-        "phone": "+1 (555) 555-55-55"
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "call",
+                "caption": "Call me",
+                "phone": "+1 (555) 555-55-55"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 ### Url button
@@ -261,25 +290,72 @@ There are 3 options of `webview_size`:
 
 `compact` - (50%)
 
+The `"webview_size"` property is optional.
+    
     {
-        "type": "url",
-        "caption": "External link",
-        "url": "https://manychat.com",
-        "webview_size": "full" // optional, default native
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "url",
+                "caption": "External link",
+                "url": "https://manychat.com",
+                "webview_size": "full"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 ### Share button
 
     {
-        "type": "share"
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "share"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 ### Go to node button*
 
     {
-        "type": "node",
-        "caption": "Show",
-        "target": "My Content"
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "node",
+                "caption": "Show",
+                "target": "My Content"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 `target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
@@ -287,28 +363,59 @@ There are 3 options of `webview_size`:
 ### Go to flow button
 
     {
-        "type": "flow",
-        "caption": "Go",
-        "target": "content20180221085508_278589"
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "flow",
+                "caption": "Go",
+                "target": "content20180221085508_278589"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 `target` needs flow ID (it can be found in URL when flow is opened) 
     
 ### Buy button
+The `"success_target"` property is optional.
 
     {
-        "type":    "buy",
-        "caption": "Buy",
-        "customer": {
-            "shipping_address": true,
-            "contact_name":     false,
-            "contact_phone":    true
-        },
-        "product": {
-            "label": "T-shirt",
-            "cost": 2250
-        },
-        "success_target": "My Content" // Optional
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type":    "buy",
+                "caption": "Buy",
+                "customer": {
+                  "shipping_address": true,
+                  "contact_name":     false,
+                  "contact_phone":    true
+                },
+                "product": {
+                  "label": "T-shirt",
+                  "cost": 2250
+                },
+                "success_target": "My Content"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 `shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form;
@@ -320,20 +427,34 @@ There are 3 options of `webview_size`:
 `buy` button can only be used after Stripe account is connected in ManyChat settings. This button is in Beta mode.
 
 ### Dynamic block callback button
+The `"headers"`, `"payload"` properties are optional.
 
     {
-        "type": "dynamic_block_callback",
-        "caption": "Dynamic content",
-        "url": "https://manychat.com/dynamic",
-        "method": "post",
-        "headers": { //optional
-            "x-header": "value",
-            ...
-        },
-        "payload": { //optional
-            "key": "value",
-            ...
-        }
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "dynamic_block_callback",
+                "caption": "Dynamic content",
+                "url": "https://manychat.com/dynamic",
+                "method": "post",
+                "headers": {
+                  "x-header": "value"
+                },
+                "payload": {
+                  "key": "value"
+                }
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
     }
     
 `dynamic_block_callback` works the same way as dynamic block in a content node, it will send a request to the server upon click, server reply will be sent to user. External server URL must be mentioned with HTTPS protocol.
@@ -344,8 +465,29 @@ There are 3 options of `webview_size`:
 Use this response for add tag for subscriber. Tag with same name must be exists in your bot:
 
     {
-        "action": "add_tag",
-        "tag_name": "your tag",
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "url",
+                "caption": "External link",
+                "url": "https://manychat.com"
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "action": "add_tag",
+            "tag_name": "your tag",
+          }
+        ],
+        "quick_replies": []
+      }
     }
     
 Tag name sent using `tag_name` parameter should match one of existing tags within ManyChat bot 
@@ -354,17 +496,59 @@ Tag name sent using `tag_name` parameter should match one of existing tags withi
 Use this response for remove tag for subscriber. Tag with same name must be exists in your bot:
 
     {
-        "action": "remove_tag",
-        "tag_name": "your tag",
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "url",
+                "caption": "External link",
+                "url": "https://manychat.com"
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "action": "remove_tag",
+            "tag_name": "your tag",
+          }
+        ],
+        "quick_replies": []
+      }
     }
     
 ## Action set subscriber's field value
 Use this response for set subscriber's field value. Custom field with same name must be exists in your bot
 
     {
-        "action": "set_field_value",
-        "field_name": "your field name",
-        "value": "some value"
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "url",
+                "caption": "External link",
+                "url": "https://manychat.com"
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "action": "set_field_value",
+            "field_name": "your field name",
+            "value": "some value"
+          }
+        ],
+        "quick_replies": []
+      }
     }
     
 Filed name sent using `field_name` should match with name of one of custom fields existing within ManyChat bot
@@ -381,8 +565,29 @@ Use following value formats:
 Use this response for unset (clear) subscriber's field value. Custom field with same name must be exists in your bot
 
     {
-        "action": "unset_field_value",
-        "field_name": "your field name"
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "url",
+                "caption": "External link",
+                "url": "https://manychat.com"
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "action": "unset_field_value",
+            "field_name": "your field name"
+          }
+        ],
+        "quick_replies": []
+      }
     }
     
 # Quick replies
@@ -393,9 +598,30 @@ Quick reply description format is the same for buttons, it supports `content`, `
 ## Go to node quick reply*
 
     {
-        "type": "node",
-        "caption": "Show",
-        "target": "My Content"
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "url",
+                "caption": "External link",
+                "url": "https://manychat.com"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": [
+          {
+            "type": "node",
+            "caption": "Show",
+            "target": "My Content"
+          }
+        ]
+      }
     }
     
 `target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
@@ -403,26 +629,67 @@ Quick reply description format is the same for buttons, it supports `content`, `
 ## Go to flow quick reply
 
     {
-        "type": "flow",
-        "caption": "Go",
-        "target": "content20180221085508_278589"
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "url",
+                "caption": "External link",
+                "url": "https://manychat.com"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": [
+          {
+            "type": "flow",
+            "caption": "Go",
+            "target": "content20180221085508_278589"
+          }
+        ]
+      }
     }
     
 ## Dynamic block callback quick reply
+The `"headers"`, `"payload"` properties are optional.
 
     {
-        "type": "dynamic_block_callback",
-        "caption": "Dynamic content",
-        "url": "https://manychat.com/dynamic",
-        "method": "post",
-        "headers": { //optional
-            "x-header": "value",
-            ...
-        },
-        "payload": { //optional
-            "key": "value",
-            ...
-        }
+      "version": "v2",
+      "content": {
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type": "url",
+                "caption": "External link",
+                "url": "https://manychat.com"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": [
+          {
+            "type": "dynamic_block_callback",
+            "caption": "Dynamic content",
+            "url": "https://manychat.com/dynamic",
+            "method": "post",
+            "headers": {
+              "x-header": "value"
+            },
+            "payload": {
+              "key": "value"
+            }
+          }
+        ]
+      }
     }
     
 `target` needs flow ID (it can be found in URL when flow is opened) 
