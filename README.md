@@ -47,49 +47,109 @@ Use this response for sending text messages. The `"buttons"` property is optiona
 `url`, `flow`, `node` and `call` buttons can be used with text message.
 
     {
-       "type": "text",
-       "text": "simple text with button",
-       "buttons": [
-            {
-                "type": "url",
-                "caption": "External link",
-                "url": "https://manychat.com"
-            }
-       ]
+        "version": "v2",
+        "content": {
+            "messages": [
+                {
+                    "type": "text",
+                    "text": "simple text with button",
+                    "buttons": [
+                        {
+                            "type": "url",
+                            "caption": "External link",
+                            "url": "https://manychat.com"
+                        }
+                    ]
+                },
+                {
+                    ...Another messages
+                }
+            ],
+            "actions": [],  //optional
+            "quick_replies": []  //optional
+        }
     }
     
 ## Sending image
 This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
 
     {
-       "type": "image",
-       "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
-       "buttons": [] //optional
+        "version": "v2",
+        "content": {
+            "messages": [
+                {
+                    "type": "image",
+                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
+                    "buttons": [] //optional
+                },
+                {
+                    ...Another messages
+                }
+            ],
+            "actions": [],  //optional
+            "quick_replies": []  //optional
+        }
     }
     
 ## Sending video file
 This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
-    
+
     {
-       "type": "video",
-       "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mpg",
-       "buttons": [] //optional
+        "version": "v2",
+        "content": {
+            "messages": [
+                {
+                    "type": "video",
+                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mpg",
+                    "buttons": [] //optional
+                },
+                {
+                    ...Another messages
+                }
+            ],
+            "actions": [],  //optional
+            "quick_replies": []  //optional
+        }
     }
     
 ## Sending audio file
 This response is used to send audio files. Messenger supports audio, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
-    
+
     {
-       "type": "audio",
-       "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mp3"
+        "version": "v2",
+        "content": {
+            "messages": [
+                {
+                    "type": "audio",
+                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mp3"
+                },
+                {
+                    ...Another messages
+                }
+            ],
+            "actions": [],  //optional
+            "quick_replies": []  //optional
+        }
     }
      
 ## Sending files
 This response is used to send any other files, which are no larger than 25 MB.
 
     {
-       "type": "file",
-       "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.pdf"
+        "version": "v2",
+        "content": {
+            "messages": [
+                {
+                    "type": "file",
+                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.pdf"
+                },
+                {
+                    ...Another messages
+                }
+            ],
+            "actions": [],  //optional
+            "quick_replies": []  //optional
+        }
     }
     
     
@@ -97,20 +157,32 @@ This response is used to send any other files, which are no larger than 25 MB.
 This response is used to send a horizontal scrollable gallery. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
 
     {
-       "type": "cards",
-       "elements": [
-            {
-              "title": "Card title",
-              "subtitle": "card text",
-              "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
-              "action_url": "https://manychat.com", //optional
-              "buttons": [] //optional
-            },
-            {
-                ...
-            }
-       ],
-       "image_aspect_ratio": "horizontal"
+        "version": "v2",
+        "content": {
+            "messages": [
+                {
+                   "type": "cards",
+                   "elements": [
+                        {
+                          "title": "Card title",
+                          "subtitle": "card text",
+                          "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
+                          "action_url": "https://manychat.com", //optional
+                          "buttons": [] //optional
+                        },
+                        {
+                            ...
+                        }
+                   ],
+                   "image_aspect_ratio": "horizontal"
+                },
+                {
+                    ...Another messages
+                }
+            ],
+            "actions": [],  //optional
+            "quick_replies": []  //optional
+        }
     }
     
 `action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs.\
@@ -121,22 +193,34 @@ This response is used to send a set of items vertically.  There are 2 options of
 You can use `url`, `flow`, `node` and `buy` buttons with list message. The number of elements is limited from 2 to 4.
 
     {
-       "type": "list",
-       "top_element_style": "compact", //optional, default "compact"
-       "buttons": [], //optional
-       "elements": [
-         {
-            "title": "list title1",
-            "subtitle": "list substitle2",
-            "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png"
-            "action_url": "https://manychat.com", //optional
-            "buttons": [] //optional
-         },
-         {
-            ...
-         }
-       ]
-     }
+        "version": "v2",
+        "content": {
+            "messages": [
+            {
+                   "type": "list",
+                   "top_element_style": "compact", //optional, default "compact"
+                   "buttons": [], //optional
+                   "elements": [
+                     {
+                        "title": "list title1",
+                        "subtitle": "list substitle2",
+                        "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png"
+                        "action_url": "https://manychat.com", //optional
+                        "buttons": [] //optional
+                     },
+                     {
+                        ...
+                     }
+                   ]
+                },
+                {
+                    ...Another messages
+                }
+            ],
+            "actions": [],  //optional
+            "quick_replies": []  //optional
+        }
+    }
      
 `action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs
 
