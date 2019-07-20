@@ -358,8 +358,9 @@ The `"webview_size"` property is optional.
       }
     }
     
-`target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
+`target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
 Go to node buttons are not supported in Public API.
+
     
 ### Go to flow button
 
@@ -423,7 +424,7 @@ The `"success_target"` property is optional.
 
 `product`.`cost` should be set in cents (for example cost value of `$22.5` must set to `2250`); 
 
-`success_target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations;
+`success_target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations;
 
 `buy` button can only be used after Stripe account is connected in ManyChat settings. This button is in Beta mode.
 
@@ -463,7 +464,7 @@ The `"headers"`, `"payload"` properties are optional.
 # Actions format
 `actions` property of server response is optional.
 ## Action add tag
-Use this response for add tag for subscriber. Tag with same name must be exists in your bot:
+Use this response to add a tag to a subscriber. Tag with the same name must exist in your bot:
 
     {
       "version": "v2",
@@ -494,7 +495,7 @@ Use this response for add tag for subscriber. Tag with same name must be exists 
 Tag name sent using `tag_name` parameter should match one of existing tags within ManyChat bot 
     
 ## Action remove tag
-Use this response for remove tag for subscriber. Tag with same name must be exists in your bot:
+Use this response to remove a tag from a subscriber. Tag with the same name must exist in your bot:
 
     {
       "version": "v2",
@@ -523,7 +524,7 @@ Use this response for remove tag for subscriber. Tag with same name must be exis
     }
     
 ## Action set subscriber's field value
-Use this response for set subscriber's field value. Custom field with same name must be exists in your bot
+Use this response to set subscriber's field value. Custom field with the same name must exist in your bot
 
     {
       "version": "v2",
@@ -563,7 +564,7 @@ Use following value formats:
 - For `True/False` field type value should be transferred like boolean `true` or `false` without quotation marks
 
 ## Action unset subscriber's field value
-Use this response for unset (clear) subscriber's field value. Custom field with same name must be exists in your bot
+Use this response to unset (clear) subscriber's field value. Custom field with the same name must  exist in your bot
 
     {
       "version": "v2",
@@ -625,7 +626,7 @@ Quick reply description format is the same for buttons, it supports `content`, `
       }
     }
     
-`target` key should be linked to a node existing within executed flow. Node name is can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
+`target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
 Go to node quick replies are not supported in Public API.
     
 ## Go to flow quick reply
