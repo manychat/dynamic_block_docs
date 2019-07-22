@@ -735,6 +735,8 @@ You can specify the time limit (in seconds) for this callback by using `timeout`
         }
       }
     }
+    
+`external_message_callback` works the same way as dynamic block in a content node, it will send a request to the server when the subscriber sent a text message, server reply will be sent to subscriber. External server URL must be mentioned with HTTPS protocol.
 
 # Variables
 
