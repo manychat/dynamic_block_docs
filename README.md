@@ -1,3 +1,5 @@
+{% raw %}
+
 # Response Reference
 
 ## Response format
@@ -705,7 +707,7 @@ The `"headers"`, `"payload"` properties are optional.
 
 You can ask ManyChat to handle the next subscriber's message on your side by using the `external_message_callback` property.
 
-`{% raw %}{{last_input_text}}{% endraw %}` variable in the `payload` property will be replaced by the text of the subscriber's message.
+`{{last_input_text}}` variable in the `payload` property will be replaced by the text of the subscriber's message.
 
 You can specify the time limit (in seconds) for this callback by using `timeout` property (default value is 1 day, maximum value is 1 day). If subscriber will not send text message in this period, callback will expire.
 
@@ -727,8 +729,8 @@ You can specify the time limit (in seconds) for this callback by using `timeout`
               "x-header": "value"
             },
             "payload": {
-              "id": "{% raw %}{{user_id}}{% endraw %}",
-              "last_input_text": "{% raw %}{{last_input_text}}{% endraw %}",
+              "id": "{{user_id}}",
+              "last_input_text": "{{last_input_text}}",
               "key": "value"
             },
             "timeout": 600
@@ -769,3 +771,4 @@ In dynamic block request body, you can use `Full Subscriber Data` variable, that
         }
 
     }
+{% endraw %}
