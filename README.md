@@ -442,7 +442,7 @@ The `"headers"`, `"payload"` properties are optional.
               {
                 "type": "dynamic_block_callback",
                 "caption": "Dynamic content",
-                "url": "https://manychat.com/dynamic",
+                "url": "https://your-service.com/dynamic",
                 "method": "post",
                 "headers": {
                   "x-header": "value"
@@ -682,7 +682,7 @@ The `"headers"`, `"payload"` properties are optional.
           {
             "type": "dynamic_block_callback",
             "caption": "Dynamic content",
-            "url": "https://manychat.com/dynamic",
+            "url": "https://your-service.com/dynamic",
             "method": "post",
             "headers": {
               "x-header": "value"
@@ -721,7 +721,7 @@ You can specify the time limit (in seconds) for this callback by using `timeout`
         "actions": [],
         "quick_replies": [],
         "external_message_callback": {
-            "url": "https://manychat.com/dynamic",
+            "url": "https://your-service.com/dynamic",
             "method": "post",
             "headers": {
               "x-header": "value"
