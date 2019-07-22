@@ -1,3 +1,5 @@
+{% raw %}
+
 # Response Reference
 
 ## Response format
@@ -769,3 +771,4 @@ In dynamic block request body, you can use `Full Subscriber Data` variable, that
         }
 
     }
+{% endraw %}
