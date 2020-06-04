@@ -59,7 +59,7 @@ Use this response for sending text messages. The `"buttons"` property is optiona
     }
     
 ## Sending image
-This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
 
     {
        "type": "image",
@@ -68,7 +68,7 @@ This response is used to send image files. Messenger supports JPG, PNG and GIF i
     }
     
 ## Sending video file
-This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
     
     {
        "type": "video",
@@ -77,7 +77,7 @@ This response is used to send video files. Messenger supports videos, which are 
     }
     
 ## Sending audio file
-This response is used to send audio files. Messenger supports audio, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+This response is used to send audio files. Messenger supports audio, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
     
     {
        "type": "audio",
@@ -94,7 +94,7 @@ This response is used to send any other files, which are no larger than 25 MB.
     
     
 ## Sending gallery cards
-This response is used to send a horizontal scrollable gallery. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+This response is used to send a horizontal scrollable gallery. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
 
     {
        "type": "cards",
@@ -139,7 +139,7 @@ You can use `url`, `flow`, `node` and `buy` buttons with list message. The numbe
 `action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs
 
 ## Buttons
-You can use buttons with each types: `call`, `url`, `share`, `flow`, `node`, `buy`.
+You can use buttons with each types: `call`, `url`, `flow`, `node`, `buy`.
 Buttons format:
 
     {
@@ -178,13 +178,7 @@ There are 3 options of `webview_size`:
         "url": "https://manychat.com",
         "webview_size": "full" // optional, default native
     }
-    
-### Share button
 
-    {
-        "type": "share"
-    }
-    
 ### Go to node button*
 
     {
@@ -343,7 +337,7 @@ Quick reply description format is the same for buttons, it supports `content`, `
 
 # Variables
 
-In dynamic block request body, you can use `Full Subscriber Data` variable, that contains all subscriber's information:
+In dynamic block request body, you can use `Full Subscriber Data`    variable, that contains all subscriber's information:
 
     {
         "id": 13245647xxxxxxxxx,
