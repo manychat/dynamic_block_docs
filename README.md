@@ -384,8 +384,9 @@ The `"success_target"` property is optional.
                 "caption": "Buy",
                 "customer": {
                   "shipping_address": true,
-                  "contact_name":     false,
-                  "contact_phone":    true
+                  "contact_name": false,
+                  "contact_phone": true,
+                  "contact_email": true
                 },
                 "product": {
                   "label": "T-shirt",
