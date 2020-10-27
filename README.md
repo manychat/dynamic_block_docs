@@ -72,7 +72,7 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
     }
     
 ## Sending image
-This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
 The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
@@ -91,8 +91,8 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
     }
     
 ## Sending video file
-This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
-The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
+This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
+The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.  
 
     {
       "version": "v2",
@@ -110,7 +110,7 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
     }
     
 ## Sending audio file
-This response is used to send audio files. Messenger supports audio, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+This response is used to send audio files. Messenger supports audio, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
 The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
@@ -148,7 +148,7 @@ The `"actions"`, `"quick_replies"` properties are optional.
     
     
 ## Sending gallery cards
-This response is used to send a horizontal scrollable gallery. You can use `url`, `call`, `buy`, `flow`, `node` and `share` buttons.
+This response is used to send a horizontal scrollable gallery. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
 The `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
@@ -209,7 +209,7 @@ The `"top_element_style"`, `"action_url"`, `"buttons"`, `"actions"`, `"quick_rep
 `action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs
 
 ## Buttons
-You can use buttons with each types: `call`, `url`, `share`, `flow`, `node`, `buy`.
+You can use buttons with each types: `call`, `url`, `flow`, `node`, `buy`.
 You can provide custom action to be performed with the button.  
 Actions can only be attached to `url`, `flow` and `node` button types.
 Actions for buttons must comply with same format and restrictions as described in [Actions format](#actions-format) bellow.
@@ -315,28 +315,7 @@ The `"webview_size"` property is optional.
         "quick_replies": []
       }
     }
-    
-### Share button
 
-    {
-      "version": "v2",
-      "content": {
-        "messages": [
-          {
-            "type": "text",
-            "text": "simple text with button",
-            "buttons": [
-              {
-                "type": "share"
-              }
-            ]
-          }
-        ],
-        "actions": [],
-        "quick_replies": []
-      }
-    }
-    
 ### Go to node button*
 
     {
@@ -405,8 +384,9 @@ The `"success_target"` property is optional.
                 "caption": "Buy",
                 "customer": {
                   "shipping_address": true,
-                  "contact_name":     false,
-                  "contact_phone":    true
+                  "contact_name": false,
+                  "contact_phone": true,
+                  "contact_email": true
                 },
                 "product": {
                   "label": "T-shirt",
@@ -742,7 +722,7 @@ You can specify the time limit (in seconds) for this callback by using `timeout`
 
 # Variables
 
-In dynamic block request body, you can use `Full Subscriber Data` variable, that contains all subscriber's information:
+In dynamic block request body, you can use `Full Subscriber Data`    variable, that contains all subscriber's information:
 
     {
         "id": 13245647xxxxxxxxx,
