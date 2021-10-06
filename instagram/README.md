@@ -1,5 +1,8 @@
 {% raw %}
 
+### See also
+<a href="https://manychat.github.io/dynamic_block_docs/">Response Reference for Facebook Automation</a>
+
 # Response Reference for Instagram Automation
 
 ## Response format
@@ -8,6 +11,7 @@ Response format for sending dynamic messages:
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -53,6 +57,7 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -78,6 +83,7 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "image",
@@ -97,6 +103,7 @@ The `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are o
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "cards",
@@ -130,6 +137,7 @@ The `"actions"` property is optional.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -177,6 +185,7 @@ The `"actions"` property is optional.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -209,6 +218,7 @@ The `"webview_size"` property is optional.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -233,6 +243,7 @@ The `"webview_size"` property is optional.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -260,6 +271,7 @@ Go to node buttons are not supported in Public API.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -286,6 +298,7 @@ The `"success_target"` property is optional.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -328,6 +341,7 @@ The `"headers"`, `"payload"` properties are optional.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -363,6 +377,7 @@ Use this response to add a tag to a subscriber. Tag with the same name must exis
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -394,6 +409,7 @@ Use this response to remove a tag from a subscriber. Tag with the same name must
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -423,6 +439,7 @@ Use this response to set subscriber's field value. Custom field with the same na
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -463,6 +480,7 @@ Use this response to unset (clear) subscriber's field value. Custom field with t
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -496,6 +514,7 @@ Quick reply description format is the same for buttons, it supports `content`, `
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -528,6 +547,7 @@ Go to node quick replies are not supported in Public API.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -558,6 +578,7 @@ The `"headers"`, `"payload"` properties are optional.
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",
@@ -606,6 +627,7 @@ You can specify the time limit (in seconds) for this callback by using `timeout`
     {
       "version": "v2",
       "content": {
+        "type": "instagram",
         "messages": [
           {
             "type": "text",

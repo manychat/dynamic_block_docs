@@ -1,6 +1,9 @@
 {% raw %}
 
-# Response Reference
+### See also
+<a href="https://manychat.github.io/dynamic_block_docs/instagram/">Response Reference for Instagram Automation</a>
+
+# Response Reference for Facebook Automation
 
 ## Response format
 Response format for sending dynamic messages:
@@ -176,37 +179,6 @@ The `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are o
     
 `action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs.\
 `image_aspect_ratio` -  The aspect ratio used to render cards. You can use `horizontal` or `square` (default `horizontal`).
-
-## Sending lists
-This response is used to send a set of items vertically.  There are 2 options of rendering it. `"top_element_style": "large"` renders the first item with a cover image with text overlaid. `"top_element_style": "compact"` renders each item identically and is useful for presenting a list of items where no item is shown prominently.
-You can use `url`, `flow`, `node` and `buy` buttons with list message. The number of elements is limited from 2 to 4.
-The `"top_element_style"`, `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
-
-    {
-      "version": "v2",
-      "content": {
-        "messages": [
-          {
-            "type": "list",
-            "top_element_style": "compact",
-            "buttons": [],
-            "elements": [
-              {
-                "title": "list title1",
-                "subtitle": "list substitle2",
-                "image_url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png"
-                "action_url": "https://manychat.com",
-                "buttons": []
-              }
-            ]
-          }
-        ],
-        "actions": [],
-        "quick_replies": []
-      }
-    }
-     
-`action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs
 
 ## Buttons
 You can use buttons with each types: `call`, `url`, `flow`, `node`, `buy`.
