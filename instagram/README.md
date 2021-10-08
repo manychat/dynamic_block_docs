@@ -128,9 +128,8 @@ The `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are o
 `image_aspect_ratio` -  The aspect ratio used to render cards. You can use `horizontal` or `square` (default `horizontal`).
 
 ## Buttons
-You can use buttons with each types: `call`, `url`, `flow`, `node`, `buy`.
-You can provide custom action to be performed with the button.  
-Actions can only be attached to `url`, `flow` and `node` button types.
+You can use buttons with each types: `url`, `flow`, `node`.
+You can provide custom action to be performed with the button.
 Actions for buttons must comply with same format and restrictions as described in [Actions format](#actions-format) bellow.
 The `"actions"` property is optional.
 
@@ -177,30 +176,6 @@ The `"actions"` property is optional.
             ...Another quick replies
           }
         ]
-      }
-    }
-
-### Call button
-
-    {
-      "version": "v2",
-      "content": {
-        "type": "instagram",
-        "messages": [
-          {
-            "type": "text",
-            "text": "simple text with button",
-            "buttons": [
-              {
-                "type": "call",
-                "caption": "Call me",
-                "phone": "+1 (555) 555-55-55"
-              }
-            ]
-          }
-        ],
-        "actions": [],
-        "quick_replies": []
       }
     }
     
@@ -290,84 +265,7 @@ Go to node buttons are not supported in Public API.
       }
     }
     
-`target` needs flow ID (it can be found in URL when flow is opened) 
-    
-### Buy button
-The `"success_target"` property is optional.
-
-    {
-      "version": "v2",
-      "content": {
-        "type": "instagram",
-        "messages": [
-          {
-            "type": "text",
-            "text": "simple text with button",
-            "buttons": [
-              {
-                "type":    "buy",
-                "caption": "Buy",
-                "customer": {
-                  "shipping_address": true,
-                  "contact_name": false,
-                  "contact_phone": true,
-                  "contact_email": true
-                },
-                "product": {
-                  "label": "T-shirt",
-                  "cost": 2250
-                },
-                "success_target": "My Content"
-              }
-            ]
-          }
-        ],
-        "actions": [],
-        "quick_replies": []
-      }
-    }
-    
-`shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form;
-
-`product`.`cost` should be set in cents (for example cost value of `$22.5` must set to `2250`); 
-
-`success_target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations;
-
-`buy` button can only be used after Stripe account is connected in ManyChat settings. This button is in Beta mode.
-
-### Dynamic block callback button
-The `"headers"`, `"payload"` properties are optional.
-
-    {
-      "version": "v2",
-      "content": {
-        "type": "instagram",
-        "messages": [
-          {
-            "type": "text",
-            "text": "simple text with button",
-            "buttons": [
-              {
-                "type": "dynamic_block_callback",
-                "caption": "Dynamic content",
-                "url": "https://your-service.com/dynamic",
-                "method": "post",
-                "headers": {
-                  "x-header": "value"
-                },
-                "payload": {
-                  "key": "value"
-                }
-              }
-            ]
-          }
-        ],
-        "actions": [],
-        "quick_replies": []
-      }
-    }
-    
-`dynamic_block_callback` works the same way as dynamic block in a content node, it will send a request to the server upon click, server reply will be sent to user. External server URL must be mentioned with HTTPS protocol.
+`target` needs flow ID (it can be found in URL when flow is opened)
    
 # Actions format
 `actions` property of server response is optional.
@@ -507,7 +405,7 @@ Use this response to unset (clear) subscriber's field value. Custom field with t
 # Quick replies
 `quick_replies` property of server response is optional.
 Quick replies cannot be used in dynamic block of a content node if there are other blocks exist afterwards.
-Quick reply description format is the same for buttons, it supports `content`, `node`, `dynamic_block_callback` types.
+Quick reply description format is the same for buttons, it supports `content`, `node` types.
 
 ## Go to node quick reply*
 
@@ -571,88 +469,6 @@ Go to node quick replies are not supported in Public API.
         ]
       }
     }
-    
-## Dynamic block callback quick reply
-The `"headers"`, `"payload"` properties are optional.
-
-    {
-      "version": "v2",
-      "content": {
-        "type": "instagram",
-        "messages": [
-          {
-            "type": "text",
-            "text": "simple text with button",
-            "buttons": [
-              {
-                "type": "url",
-                "caption": "External link",
-                "url": "https://manychat.com"
-              }
-            ]
-          }
-        ],
-        "actions": [],
-        "quick_replies": [
-          {
-            "type": "dynamic_block_callback",
-            "caption": "Dynamic content",
-            "url": "https://your-service.com/dynamic",
-            "method": "post",
-            "headers": {
-              "x-header": "value"
-            },
-            "payload": {
-              "key": "value"
-            }
-          }
-        ]
-      }
-    }
-    
-`target` needs flow ID (it can be found in URL when flow is opened) 
-
-
-\* - does not work for Zapier action "Send Dynamic Message to User"
-
-# External Message Callback
-`external_message_callback` property of server response is optional.
-
-You can ask ManyChat to handle the next subscriber's message on your side by using the `external_message_callback` property.
-
-`{{last_input_text}}` variable in the `payload` property will be replaced by the text of the subscriber's message.
-
-You can specify the time limit (in seconds) for this callback by using `timeout` property (default value is 1 day, maximum value is 1 day). If subscriber will not send text message in this period, callback will expire.
-
-    {
-      "version": "v2",
-      "content": {
-        "type": "instagram",
-        "messages": [
-          {
-            "type": "text",
-            "text": "Hello! How are you?"
-          }
-        ],
-        "actions": [],
-        "quick_replies": [],
-        "external_message_callback": {
-            "url": "https://your-service.com/dynamic",
-            "method": "post",
-            "headers": {
-              "x-header": "value"
-            },
-            "payload": {
-              "id": "{{user_id}}",
-              "last_input_text": "{{last_input_text}}",
-              "key": "value"
-            },
-            "timeout": 600
-        }
-      }
-    }
-    
-`external_message_callback` works the same way as dynamic block in a content node, it will send a request to the server when the subscriber sent a text message, server reply will be sent to subscriber. External server URL must be mentioned with HTTPS protocol.
 
 # Variables
 
