@@ -180,15 +180,6 @@ The `"actions"` property is optional.
     }
     
 ### Url button
-There are 3 options of `webview_size`: 
-
-`full` - (100%), 
-
-`medium` - (75%), 
-
-`compact` - (50%)
-
-The `"webview_size"` property is optional.
     
     {
       "version": "v2",
@@ -203,7 +194,6 @@ The `"webview_size"` property is optional.
                 "type": "url",
                 "caption": "External link",
                 "url": "https://manychat.com",
-                "webview_size": "full"
               }
             ]
           }
