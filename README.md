@@ -380,7 +380,7 @@ The `"success_target"` property is optional.
 
 `success_target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations;
 
-`buy` button can only be used after Stripe account is connected in ManyChat settings. This button is in Beta mode.
+`buy` button can only be used after Stripe/Paypal account is connected in ManyChat settings.
 
 ### Dynamic block callback button
 The `"headers"`, `"payload"` properties are optional.

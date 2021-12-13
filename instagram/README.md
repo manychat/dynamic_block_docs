@@ -51,7 +51,7 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
 ## Sending text
 Use this response for sending text messages.
-`url`, `flow`, `node` and `call` buttons can be used with text message.
+`url`, `flow` and `node` buttons can be used with text message.
 The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
@@ -77,8 +77,8 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
     }
     
 ## Sending image
-This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
-The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
+This response is used to send image files. Messenger supports JPG, PNG and GIF images.
+The `"actions"`, `"quick_replies"` properties are optional.
 
     {
       "version": "v2",
@@ -88,7 +88,6 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
           {
             "type": "image",
             "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.png",
-            "buttons": []
           }
         ],
         "actions": [],
@@ -97,7 +96,7 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
     }
 
 ## Sending gallery cards
-This response is used to send a horizontal scrollable gallery. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
+This response is used to send a horizontal scrollable gallery. You can use `url`, `buy`, `flow` and `node` buttons.
 The `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
 
     {
@@ -256,6 +255,49 @@ Go to node buttons are not supported in Public API.
     }
     
 `target` needs flow ID (it can be found in URL when flow is opened)
+
+### Buy button
+The `"success_target"` property is optional.
+
+    {
+      "version": "v2",
+      "content": {
+        "type": "instagram",
+        "messages": [
+          {
+            "type": "text",
+            "text": "simple text with button",
+            "buttons": [
+              {
+                "type":    "buy",
+                "caption": "Buy",
+                "customer": {
+                  "shipping_address": true,
+                  "contact_name": false,
+                  "contact_phone": true,
+                  "contact_email": true
+                },
+                "product": {
+                  "label": "T-shirt",
+                  "cost": 2250
+                },
+                "success_target": "My Content"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "quick_replies": []
+      }
+    }
+
+`shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form;
+
+`product`.`cost` should be set in cents (for example cost value of `$22.5` must set to `2250`);
+
+`success_target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations;
+
+`buy` button can only be used after Stripe/Paypal account is connected in ManyChat settings.
    
 # Actions format
 `actions` property of server response is optional.
