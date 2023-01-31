@@ -6,7 +6,7 @@
 # Response Reference for Facebook Automation
 
 ## Response format
-Response format for sending dynamic messages:
+The response format for sending dynamic messages:
 
     {
       "version": "v2",
@@ -17,7 +17,7 @@ Response format for sending dynamic messages:
             "text": "simple text"
           },
           {
-            ...Another messages
+            ...Other messages
           }
         ],
         "actions": [  //optional
@@ -26,7 +26,7 @@ Response format for sending dynamic messages:
             "tag_name": "example tag"
           },
           {
-            ...Another actions
+            ...Other actions
           }
         ],
         "quick_replies": [ //optional
@@ -36,22 +36,23 @@ Response format for sending dynamic messages:
             "target": "My Content"
           },
           {
-            ...Another quick replies
+            ...Other quick replies
           }
         ]
       }
     }
-    
-Dynamic block API current version `v2`
-Dynamic block has a limit to have not more than 10 messages in `messages` block, 11 quick replies and 5 actions.
-The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
+
+Dynamic Block API's current version is `v2` 
+
+Dynamic Block has a limit of no more than 10 messages in the `messages` block, 11 Quick Replies, and 5 Actions. The `"buttons"`, `"actions"`, and `"quick_replies"` properties are optional.
 
 # Messages format
-
 ## Sending text
 Use this response for sending text messages.
-`url`, `flow`, `node` and `call` buttons can be used with text message.
-The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
+
+The `url`, `flow`, and `node` buttons can be used with text messages.
+
+The `"buttons"`, `"actions"`, and `"quick_replies"` properties are optional.
 
     {
       "version": "v2",
@@ -74,9 +75,10 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
       }
     }
     
-## Sending image
-This response is used to send image files. Messenger supports JPG, PNG and GIF images. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
-The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
+## Sending images
+This response is used to send image files. Messenger supports JPG, PNG, and GIF images. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
+
+The `"buttons"`, `"actions"`, and `"quick_replies"` properties are optional.
 
     {
       "version": "v2",
@@ -94,8 +96,9 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
     }
     
 ## Sending video file
-This response is used to send video files. Messenger supports videos, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
-The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.  
+This response is used to send video files. Messenger supports videos that are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, and `node` buttons.
+
+The `"buttons"`, `"actions"`, and `"quick_replies"` properties are optional.
 
     {
       "version": "v2",
@@ -113,8 +116,9 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
     }
     
 ## Sending audio file
-This response is used to send audio files. Messenger supports audio, which are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
-The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
+This response is used to send audio files. Messenger supports audio files that are up to `25MB` in size. You can use `url`, `call`, `buy`, `flow`, and `node` buttons.
+
+The `"buttons"`, `"actions"`, and `"quick_replies"` properties are optional.
 
     {
       "version": "v2",
@@ -132,8 +136,9 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
     }
      
 ## Sending files
-This response is used to send any other files, which are no larger than 25 MB.
-The `"actions"`, `"quick_replies"` properties are optional.
+This response is used to send any other files, no larger than `25MB` in size.
+
+The `"actions"` and `"quick_replies"` properties are optional.
 
     {
       "version": "v2",
@@ -151,8 +156,9 @@ The `"actions"`, `"quick_replies"` properties are optional.
     
     
 ## Sending gallery cards
-This response is used to send a horizontal scrollable gallery. You can use `url`, `call`, `buy`, `flow` and `node` buttons.
-The `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
+This response is used to send a horizontally scrollable gallery. You can use `url`, `call`, `buy`, `flow`, and `node` buttons.
+
+The `"action_url"`, `"buttons"`, `"actions"`, and `"quick_replies"` properties are optional.
 
     {
       "version": "v2",
@@ -177,15 +183,11 @@ The `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are o
       }
     }
     
-`action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs.\
-`image_aspect_ratio` -  The aspect ratio used to render cards. You can use `horizontal` or `square` (default `horizontal`).
+`action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest using HTTPS protocol for your URLs.
+`image_aspect_ratio` - The aspect ratio used to render cards. You can use `horizontal` or `square` (default `horizontal`).
 
 ## Buttons
-You can use buttons with each types: `call`, `url`, `flow`, `node`, `buy`.
-You can provide custom action to be performed with the button.  
-Actions can only be attached to `url`, `flow` and `node` button types.
-Actions for buttons must comply with same format and restrictions as described in [Actions format](#actions-format) bellow.
-The `"actions"` property is optional.
+You can use buttons with each type: `call`, `url`, `flow`, `node`, `buy`. You can provide custom action to be performed with the button. Actions can only be attached to the `url`, `flow`, and `node` button types. Actions for buttons must comply with the same format and restrictions as described in the [Actions format](#actions-format) below. The `"actions"` property is optional.
 
     {
       "version": "v2",
@@ -202,12 +204,12 @@ The `"actions"` property is optional.
                 "actions": [] //optional
               },
               {
-                ...Another buttons
+                ...Other buttons
               }
             ]
           },
           {
-            ...Another messages
+            ...Other messages
           }
         ],
         "actions": [  //optional
@@ -216,7 +218,7 @@ The `"actions"` property is optional.
             "tag_name": "example tag"
           },
           {
-            ...Another actions
+            ...Other actions
           }
         ],
         "quick_replies": [ //optional
@@ -226,7 +228,7 @@ The `"actions"` property is optional.
             "target": "My Content"
           },
           {
-            ...Another quick replies
+            ...Other quick replies
           }
         ]
       }
@@ -256,7 +258,7 @@ The `"actions"` property is optional.
     }
     
 ### Url button
-There are 3 options of `webview_size`: 
+There are 3 options for `webview_size`: 
 
 `full` - (100%), 
 
@@ -311,11 +313,9 @@ The `"webview_size"` property is optional.
       }
     }
     
-`target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
-Go to node buttons are not supported in Public API.
-
+`target` key should be linked to a node existing within the executed Flow. The node name can be found in its header, you need to use a unique name for the node connected with the link. If there are multiple nodes with similar names inside of the same Flow, transition behavior would not meet expectations. Go-to-node buttons are not supported in Public API.
     
-### Go to flow button
+### Go to Flow button
 
     {
       "version": "v2",
@@ -338,7 +338,7 @@ Go to node buttons are not supported in Public API.
       }
     }
     
-`target` needs flow ID (it can be found in URL when flow is opened) 
+`target` needs flow ID (it can be found in the URL when the Flow is opened).
     
 ### Buy button
 The `"success_target"` property is optional.
@@ -373,17 +373,17 @@ The `"success_target"` property is optional.
         "quick_replies": []
       }
     }
-    
-`shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form;
 
-`product`.`cost` should be set in cents (for example cost value of `$22.5` must set to `2250`); 
+`shipping_address`, `contact_name`, and `contact_phone` fields are required to configure the payment form.
 
-`success_target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations;
+`product`.`cost` should be set in cents (for example cost value of `$22.5` must be set to `2250`).
 
-`buy` button can only be used after Stripe/Paypal account is connected in ManyChat settings.
+`success_target` key should be linked to a node existing within the executed Flow. The node name can be found in its header, you need to use a unique name for the node connected with the link. If there are multiple nodes with similar names inside of the same Flow, transition behavior would not meet expectations.
 
-### Dynamic block callback button
-The `"headers"`, `"payload"` properties are optional.
+`buy` button can only be used after Stripe/Paypal account is connected in Manychat Settings.
+
+### Dynamic Block callback button
+The `"headers"` and `"payload"` properties are optional.
 
     {
       "version": "v2",
@@ -413,12 +413,13 @@ The `"headers"`, `"payload"` properties are optional.
       }
     }
     
-`dynamic_block_callback` works the same way as dynamic block in a content node, it will send a request to the server upon click, server reply will be sent to user. External server URL must be mentioned with HTTPS protocol.
-   
+`dynamic_block_callback` works the same way as a Dynamic Block in a content node. It will send a request to the server upon clicking, and the server reply will be sent to the contact. External server URL must be mentioned with HTTPS protocol.
+
 # Actions format
-`actions` property of server response is optional.
+The `actions` property of the server response is optional.
+
 ## Action add tag
-Use this response to add a tag to a subscriber. Tag with the same name must exist in your bot:
+Use this response to add a Tag to a contact. A Tag with the same name must exist in your bot.
 
     {
       "version": "v2",
@@ -446,10 +447,10 @@ Use this response to add a tag to a subscriber. Tag with the same name must exis
       }
     }
     
-Tag name sent using `tag_name` parameter should match one of existing tags within ManyChat bot 
+The Tag name sent using the `tag_name` parameter should match one of the existing Tags within the Manychat bot 
     
 ## Action remove tag
-Use this response to remove a tag from a subscriber. Tag with the same name must exist in your bot:
+Use this response to remove a Tag from a contact. A Tag with the same name must exist in your bot.
 
     {
       "version": "v2",
@@ -477,8 +478,8 @@ Use this response to remove a tag from a subscriber. Tag with the same name must
       }
     }
     
-## Action set subscriber's field value
-Use this response to set subscriber's field value. Custom field with the same name must exist in your bot
+## Action set contact’s field value
+Use this response to set the contact’s field value. A Custom Field with the same name must exist in your bot.
 
     {
       "version": "v2",
@@ -507,18 +508,18 @@ Use this response to set subscriber's field value. Custom field with the same na
       }
     }
     
-Filed name sent using `field_name` should match with name of one of custom fields existing within ManyChat bot
-You need to control data type recorded in custom fields, data type should match type of custom field
+The filed name sent using `field_name` should match the name of one of the Custom Fields existing within the Manychat bot. You need to control the data type recorded in Custom Fields, data type should match the type of the Custom Field.
 
-Use following value formats:
-- For `Number` field type value should be numeric like `2` or `3.14` not bounded by double quotation marks;
-- For `Text` field type value should be transferred as text `"some text"`;
-- For `Date` field type value should be transferred as text with date formatted like `YYYY-MM-DD`, i.e. `"2018-03-25"`;
-- For `Date Time` field type value should be transferred as text with date formatted in ISO8601 UTC, i.e `"2018-03-25T13:25:00.000Z"`
-- For `True/False` field type value should be transferred like boolean `true` or `false` without quotation marks
+Use the following value formats:
 
-## Action unset subscriber's field value
-Use this response to unset (clear) subscriber's field value. Custom field with the same name must  exist in your bot
+- For the `Number` field type, the value should be numeric like `2` or `3.14`, not bounded by double quotation marks;
+- For the `Text` field type, the value should be transferred as text: `"some text"`;
+- For the `Date` field type, the value should be transferred as text with the date formatted like `YYYY-MM-DD`, i.e. `"2018-03-25"`;
+- For the `Date Time` field type, the value should be transferred as text with the date formatted in ISO8601 UTC, i.e `"2018-03-25T13:25:00.000Z"`;
+- For the `True/False` field type, the value should be transferred like a boolean `true` or `false` value without quotation marks.
+
+## Action unset contact’s field value
+Use this response to unset (clear) the contact’s field value. A Custom Field with the same name must exist in your bot.
 
     {
       "version": "v2",
@@ -546,12 +547,10 @@ Use this response to unset (clear) subscriber's field value. Custom field with t
       }
     }
     
-# Quick replies
-`quick_replies` property of server response is optional.
-Quick replies cannot be used in dynamic block of a content node if there are other blocks exist afterwards.
-Quick reply description format is the same for buttons, it supports `content`, `node`, `dynamic_block_callback` types.
+# Quick Replies
+`quick_replies` property of server response is optional. Quick Replies cannot be used in the Dynamic Block of a content node if there are other blocks afterward. The Quick Reply description format is the same for buttons, it supports `content`, `node`, and `dynamic_block_callback` types.
 
-## Go to node quick reply*
+## Go to node Quick Reply*
 
     {
       "version": "v2",
@@ -580,10 +579,9 @@ Quick reply description format is the same for buttons, it supports `content`, `
       }
     }
     
-`target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
-Go to node quick replies are not supported in Public API.
+`target` key should be linked to a node existing within the executed Flow. The node name can be found in its header, you need to use a unique name for the node connected with the link. If there are multiple nodes with similar names inside of the same Flow, transition behavior would not meet expectations. Go-to-node Quick Replies are not supported in Public API.
     
-## Go to flow quick reply
+## Go to Flow Quick Reply
 
     {
       "version": "v2",
@@ -612,8 +610,8 @@ Go to node quick replies are not supported in Public API.
       }
     }
     
-## Dynamic block callback quick reply
-The `"headers"`, `"payload"` properties are optional.
+## Dynamic Block callback Quick Reply
+The `"headers"` and `"payload"` properties are optional.
 
     {
       "version": "v2",
@@ -649,19 +647,18 @@ The `"headers"`, `"payload"` properties are optional.
       }
     }
     
-`target` needs flow ID (it can be found in URL when flow is opened) 
+`target` needs Flow ID (it can be found in the URL when the Flow is opened).
 
-
-\* - does not work for Zapier action "Send Dynamic Message to User"
+**Does not work for the Zapier action “Send Dynamic Message to User”.**
 
 # External Message Callback
-`external_message_callback` property of server response is optional.
+The `external_message_callback` property of the server response is optional.
 
-You can ask ManyChat to handle the next subscriber's message on your side by using the `external_message_callback` property.
+You can ask Manychat to handle the next contact’s message on your side by using the `external_message_callback` property.
 
-`{{last_input_text}}` variable in the `payload` property will be replaced by the text of the subscriber's message.
+The `{{last_input_text}}` variable in the `payload` property will be replaced by the text of the contact’s message.
 
-You can specify the time limit (in seconds) for this callback by using `timeout` property (default value is 1 day, maximum value is 1 day). If subscriber will not send text message in this period, callback will expire.
+You can specify the time limit (in seconds) for this callback by using the `timeout` property (the default value is 1 day, and the maximum value is 1 day). If the contact doesn’t send any text messages in this period, the callback will expire.
 
     {
       "version": "v2",
@@ -690,11 +687,11 @@ You can specify the time limit (in seconds) for this callback by using `timeout`
       }
     }
     
-`external_message_callback` works the same way as dynamic block in a content node, it will send a request to the server when the subscriber sent a text message, server reply will be sent to subscriber. External server URL must be mentioned with HTTPS protocol.
+`external_message_callback` works the same way as a Dynamic Block in a content node. It will send a request to the server when the contact sends a text message, and the server reply will be sent to the contact. The external server URL must be mentioned with the HTTPS protocol.
 
 # Variables
 
-In dynamic block request body, you can use `Full Subscriber Data`    variable, that contains all subscriber's information:
+In the Dynamic Block request body, you can use the `Full Contact Data` variable which contains all contact’s information:
 
     {
         "id": 13245647xxxxxxxxx,
