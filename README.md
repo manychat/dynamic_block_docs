@@ -1,7 +1,7 @@
 {% raw %}
 
 ### See also
-<a href="https://manychat.github.io/dynamic_block_docs/instagram/">Response Reference for Instagram Automation</a>
+<a href="https://manychat.github.io/dynamic_block_docs/channels/">Response Reference for Instagram, WhatsApp, and Telegram Automation</a>
 
 # Response Reference for Facebook Automation
 
