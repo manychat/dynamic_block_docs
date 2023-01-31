@@ -3,22 +3,22 @@
 ### See also
 <a href="https://manychat.github.io/dynamic_block_docs/">Response Reference for Facebook Automation</a>
 
-# Response Reference for Instagram Automation
+# Response Reference for Instagram, WhatsApp, and Telegram Automation
 
 ## Response format
-Response format for sending dynamic messages:
+The response format for sending dynamic messages:
 
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "whatsapp" and "telegram" are also supported
         "messages": [
           {
             "type": "text",
             "text": "simple text"
           },
           {
-            ...Another messages
+            ...Other messages
           }
         ],
         "actions": [  //optional
@@ -27,37 +27,38 @@ Response format for sending dynamic messages:
             "tag_name": "example tag"
           },
           {
-            ...Another actions
+            ...Other actions
           }
         ],
-        "quick_replies": [ //optional
+        "quick_replies": [ //optional, not supported for WhatsApp and Telegram
           {
             "type": "node",
             "caption": "Quick reply text",
             "target": "My Content"
           },
           {
-            ...Another quick replies
+            ...Other quick replies
           }
         ]
       }
     }
     
-Dynamic block API current version `v2`
-Dynamic block has a limit to have not more than 10 messages in `messages` block, 11 quick replies and 5 actions.
-The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
+Dynamic Block API's current version is `v2`
+
+Dynamic Block has a limit of no more than 10 messages in the `messages` block, 11 Quick Replies, and 5 Actions.
+The `"buttons"`, `"actions"`, and `"quick_replies"` properties are optional.
 
 # Messages format
 
 ## Sending text
 Use this response for sending text messages.
-`url`, `flow` and `node` buttons can be used with text message.
-The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
+The `url`, `flow`, and `node` buttons can be used with text messages.
+The `"buttons"`, `"actions"`, and `"quick_replies"` properties are optional.
 
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "whatsapp" and "telegram" are also supported
         "messages": [
           {
             "type": "text",
@@ -76,14 +77,13 @@ The `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
       }
     }
     
-## Sending image
-This response is used to send image files. Messenger supports JPG, PNG and GIF images.
-The `"actions"`, `"quick_replies"` properties are optional.
+## Sending images
+This response is used to send image files. The `"actions"` and `"quick_replies"` properties are optional.
 
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "telegram" is also supported
         "messages": [
           {
             "type": "image",
@@ -91,13 +91,73 @@ The `"actions"`, `"quick_replies"` properties are optional.
           }
         ],
         "actions": [],
-        "quick_replies": []
+        "quick_replies": []  // not supported for Telegram
       }
     }
 
+## Sending video files
+This response is used to send video files. You can use `url`, `buy`, `flow`, and `node` buttons. The `"buttons"` and `"actions"` properties are optional.
+
+**Sending video files is not supported by WhatsApp and Instagram channels.**
+
+    {
+        "version": "v2",
+        "content": {
+            "type": "telegram",
+            "messages": [
+                {
+                    "type": "video",
+                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mpg",
+                    "buttons": []
+                }
+            ],
+            "actions": []
+        }
+    }
+
+## Sending audio files
+This response is used to send audio files. You can use `url`, `buy`, `flow`, and `node` buttons. The `"buttons"` and `"actions"` properties are optional.
+
+**Sending audio files is not supported by WhatsApp and Instagram channels.**
+
+    {
+        "version": "v2",
+        "content": {
+            "type": "telegram",
+            "messages": [
+                {
+                    "type": "audio",
+                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.mp3",
+                    "buttons": []
+                }
+            ],
+            "actions": []
+        }
+    }
+
+## Sending files
+This response is used to send any other files, no larger than `25MB` in size. The `"actions"` property is optional.
+
+**Sending files is not supported by WhatsApp and Instagram channels.**
+
+    {
+        "version": "v2",
+        "content": {
+            "type": "telegram",
+            "messages": [
+                {
+                    "type": "file",
+                    "url": "https://manybot-thumbnails.s3.eu-central-1.amazonaws.com/ca/xxxxxxzzzzzzzzz.pdf"
+                }
+            ],
+            "actions": []
+        }
+    }
+
 ## Sending gallery cards
-This response is used to send a horizontal scrollable gallery. You can use `url`, `buy`, `flow` and `node` buttons.
-The `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are optional.
+This response is used to send a horizontally scrollable gallery. You can use `url`, `buy`, `flow`, and `node` buttons. The `"action_url"`, `"buttons"`, `"actions"`, and `"quick_replies"` properties are optional.
+
+**Galleries are not supported by WhatsApp and Telegram channels.**
 
     {
       "version": "v2",
@@ -124,18 +184,17 @@ The `"action_url"`, `"buttons"`, `"actions"`, `"quick_replies"` properties are o
     }
     
 `action_url` - URLs starting with HTTP may not open in some browsers. We strongly suggest to use HTTPS protocol for your URLs.\
-`image_aspect_ratio` -  The aspect ratio used to render cards. You can use `horizontal` or `square` (default `horizontal`).
+`image_aspect_ratio` - The aspect ratio used to render cards. You can use `horizontal` or `square` (default `horizontal`).
 
 ## Buttons
-You can use buttons with each types: `url`, `flow`, `node`.
-You can provide custom action to be performed with the button.
-Actions for buttons must comply with same format and restrictions as described in [Actions format](#actions-format) bellow.
+You can use buttons with each type: `url`, `flow`, `node`. You can provide custom actions to be performed with the button. Actions for buttons must comply with the same format and restrictions as described in the [Actions format](#actions-format) below.
+
 The `"actions"` property is optional.
 
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "whatsapp" and "telegram" are also supported
         "messages": [
           {
             "type": "text",
@@ -148,12 +207,12 @@ The `"actions"` property is optional.
                 "actions": [] //optional
               },
               {
-                ...Another buttons
+                ...Other buttons
               }
             ]
           },
           {
-            ...Another messages
+            ...Other messages
           }
         ],
         "actions": [  //optional
@@ -162,17 +221,17 @@ The `"actions"` property is optional.
             "tag_name": "example tag"
           },
           {
-            ...Another actions
+            ...Other actions
           }
         ],
-        "quick_replies": [ //optional
+        "quick_replies": [ //optional, not supported for WhatsApp and Telegram
           {
             "type": "node",
             "caption": "Quick reply text",
             "target": "My Content"
           },
           {
-            ...Another quick replies
+            ...Other quick replies
           }
         ]
       }
@@ -182,6 +241,7 @@ The `"actions"` property is optional.
     
     {
       "version": "v2",
+      "type": "instagram", // "telegram" is also supported
       "content": {
         "type": "instagram",
         "messages": [
@@ -198,7 +258,7 @@ The `"actions"` property is optional.
           }
         ],
         "actions": [],
-        "quick_replies": []
+        "quick_replies": [] // not supported for Telegram
       }
     }
 
@@ -207,7 +267,7 @@ The `"actions"` property is optional.
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "telegram" is also supported
         "messages": [
           {
             "type": "text",
@@ -222,20 +282,19 @@ The `"actions"` property is optional.
           }
         ],
         "actions": [],
-        "quick_replies": []
+        "quick_replies": [] // not supported for Telegram
       }
     }
     
-`target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
-Go to node buttons are not supported in Public API.
+*`target` key should be linked to a node existing within the executed Flow. The node name can be found in its header, you need to use a unique name for the node connected with the link. If there are multiple nodes with similar names inside of the same Flow, transition behavior would not meet expectations. Go-to-node buttons are not supported in Public API.
 
     
-### Go to flow button
+### Go to Flow button
 
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "whatsapp" and "telegram" are also supported
         "messages": [
           {
             "type": "text",
@@ -250,19 +309,19 @@ Go to node buttons are not supported in Public API.
           }
         ],
         "actions": [],
-        "quick_replies": []
+        "quick_replies": [] // not supported for WhatsApp and Telegram
       }
     }
     
-`target` needs flow ID (it can be found in URL when flow is opened)
-
+`target` needs Flow ID (it can be found in the URL when the Flow is opened).
+    
 ### Buy button
 The `"success_target"` property is optional.
 
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "telegram" is also supported
         "messages": [
           {
             "type": "text",
@@ -287,27 +346,28 @@ The `"success_target"` property is optional.
           }
         ],
         "actions": [],
-        "quick_replies": []
+        "quick_replies": [] // not supported for Telegram
       }
     }
+    
+`shipping_address`, `contact_name`, and `contact_phone` fields are required to configure the payment form.
 
-`shipping_address`, `contact_name`, `contact_phone` fields are required to configure payment form;
+`product`.`cost` should be set in cents (for example cost value of `$22.5` must be set to `2250`).
 
-`product`.`cost` should be set in cents (for example cost value of `$22.5` must set to `2250`);
+`success_target` key should be linked to a node existing within the executed Flow. The node name can be found in its header, you need to use a unique name for the node connected with the link. If there are multiple nodes with similar names inside of the same Flow, transition behavior would not meet expectations.
 
-`success_target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations;
+`buy` button can only be used after Stripe/Paypal account is connected in Manychat Settings.
 
-`buy` button can only be used after Stripe/Paypal account is connected in ManyChat settings.
-   
 # Actions format
 `actions` property of server response is optional.
+
 ## Action add tag
-Use this response to add a tag to a subscriber. Tag with the same name must exist in your bot:
+Use this response to add a Tag to a contact. A Tag with the same name must exist in your bot.
 
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "whatsapp" and "telegram" are also supported
         "messages": [
           {
             "type": "text",
@@ -327,19 +387,19 @@ Use this response to add a tag to a subscriber. Tag with the same name must exis
             "tag_name": "your tag",
           }
         ],
-        "quick_replies": []
+        "quick_replies": [] // not supported for WhatsApp and Telegram
       }
     }
     
-Tag name sent using `tag_name` parameter should match one of existing tags within ManyChat bot 
+The Tag name sent using the `tag_name` parameter should match one of the existing Tags within the Manychat bot 
     
 ## Action remove tag
-Use this response to remove a tag from a subscriber. Tag with the same name must exist in your bot:
+Use this response to remove a Tag from a contact. A Tag with the same name must exist in your bot:
 
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "whatsapp" and "telegram" are also supported
         "messages": [
           {
             "type": "text",
@@ -359,17 +419,17 @@ Use this response to remove a tag from a subscriber. Tag with the same name must
             "tag_name": "your tag",
           }
         ],
-        "quick_replies": []
+        "quick_replies": [] // not supported for WhatsApp and Telegram
       }
     }
     
-## Action set subscriber's field value
-Use this response to set subscriber's field value. Custom field with the same name must exist in your bot
+## Action set contact's field value
+Use this response to set a contact’s field value. A Custom Field with the same name must exist in your bot.
 
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "whatsapp" and "telegram" are also supported
         "messages": [
           {
             "type": "text",
@@ -390,27 +450,26 @@ Use this response to set subscriber's field value. Custom field with the same na
             "value": "some value"
           }
         ],
-        "quick_replies": []
+        "quick_replies": [] // not supported for WhatsApp and Telegram
       }
     }
     
-Filed name sent using `field_name` should match with name of one of custom fields existing within ManyChat bot
-You need to control data type recorded in custom fields, data type should match type of custom field
+The filed name sent using `field_name` should match the name of one of the Custom Fields existing within the Manychat bot. You need to control the data type recorded in Custom Fields, data type should match the type of the Custom Field.
 
-Use following value formats:
-- For `Number` field type value should be numeric like `2` or `3.14` not bounded by double quotation marks;
-- For `Text` field type value should be transferred as text `"some text"`;
-- For `Date` field type value should be transferred as text with date formatted like `YYYY-MM-DD`, i.e. `"2018-03-25"`;
-- For `Date Time` field type value should be transferred as text with date formatted in ISO8601 UTC, i.e `"2018-03-25T13:25:00.000Z"`
-- For `True/False` field type value should be transferred like boolean `true` or `false` without quotation marks
+Use the following value formats:
+- For the `Number` field type, the value should be numeric like `2` or `3.14`, not bounded by double quotation marks;
+- For the `Text` field type, the value should be transferred as text: `"some text"`;
+- For the `Date` field type, the value should be transferred as text with the date formatted like `YYYY-MM-DD`, i.e. `"2018-03-25"`;
+- For the `Date Time` field type, the value should be transferred as text with the date formatted in ISO8601 UTC, i.e `"2018-03-25T13:25:00.000Z"`;
+- For the `True/False` field type, the value should be transferred like a boolean `true` or `false` value without quotation marks.
 
-## Action unset subscriber's field value
-Use this response to unset (clear) subscriber's field value. Custom field with the same name must  exist in your bot
+## Action unset contact's field value
+Use this response to unset (clear) a contact’s field value. A Custom Field with the same name must exist in your bot.
 
     {
       "version": "v2",
       "content": {
-        "type": "instagram",
+        "type": "instagram", // "whatsapp" and "telegram" are also supported
         "messages": [
           {
             "type": "text",
@@ -430,14 +489,14 @@ Use this response to unset (clear) subscriber's field value. Custom field with t
             "field_name": "your field name"
           }
         ],
-        "quick_replies": []
+        "quick_replies": [] // not supported for WhatsApp and Telegram
       }
     }
     
-# Quick replies
-`quick_replies` property of server response is optional.
-Quick replies cannot be used in dynamic block of a content node if there are other blocks exist afterwards.
-Quick reply description format is the same for buttons, it supports `content`, `node` types.
+# Quick Replies
+`quick_replies` property of server response is optional. Quick Replies cannot be used in the Dynamic Block of a content node if there are other blocks afterward. The Quick Reply description format is the same for buttons, it supports `content` and `node` types.
+
+**Quick Reply buttons are not supported by WhatsApp and Telegram channels.**
 
 ## Go to node quick reply*
 
@@ -469,10 +528,9 @@ Quick reply description format is the same for buttons, it supports `content`, `
       }
     }
     
-`target` key should be linked to a node existing within executed flow. Node name can be found in its header, you need to use unique name for node connected with link. If there are multiple nodes with similar names inside of the same flow, transition behaviour would not meet expectations. 
-Go to node quick replies are not supported in Public API.
+*`target` key should be linked to a node existing within the executed Flow. The node name can be found in its header, you need to use a unique name for the node connected with the link. If there are multiple nodes with similar names inside of the same Flow, transition behavior would not meet expectations. Go-to-node Quick Replies are not supported in Public API.
     
-## Go to flow quick reply
+## Go to Flow Quick Reply
 
     {
       "version": "v2",
@@ -503,8 +561,7 @@ Go to node quick replies are not supported in Public API.
     }
 
 # Variables
-
-In dynamic block request body, you can use `Full Subscriber Data`    variable, that contains all subscriber's information:
+In the Dynamic Block request body, you can use the `Full Contact Data` variable, which contains all contact’s information:
 
     {
         "id": 13245647xxxxxxxxx,
